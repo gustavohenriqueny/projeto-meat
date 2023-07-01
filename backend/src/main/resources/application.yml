@@ -1,0 +1,40 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: meat
+    profiles:
+        active: dev
+    docker:
+        compose:
+            file: classpath:./docker/docker-compose.yml
+    datasource:
+        url: jdbc:postgresql://localhost:5432/meat
+        username: meat
+        password: evangelion
+        driver-class-name: org.postgresql.Driver
+    liquibase:
+        enabled: true
+        url: jdbc:postgresql://localhost:5432/meat
+        user: meat
+        password: evangelion
+        change-log: classpath:db/liquibase/master.xml
+    jpa:
+        database: postgresql
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                format_sql: true
+
+aplicacao:
+    seguranca:
+        jwt:
+            chave-secreta: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+            expiracao-chave: 86400000
+
+logging:
+    config: classpath:logback-spring.xml
+    level:
+        org.springframework: info

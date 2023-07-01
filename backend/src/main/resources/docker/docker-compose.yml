@@ -1,0 +1,13 @@
+services:
+    security-app:
+        container_name: meat-backend
+        image: postgres
+        volumes:
+            - ./sql/:/docker-entrypoint-initdb.d/
+        environment:
+            - POSTGRESQL_DATABASE=meat
+            - POSTGRES_USER=meat
+            - POSTGRES_PASSWORD=evangelion
+            - POSTGRESQL_POSTGRES_PASSWORD=evangelion
+        ports:
+            - 5432:5432
