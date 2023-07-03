@@ -27,6 +27,9 @@ spring:
         properties:
             hibernate:
                 format_sql: true
+    output:
+        ansi:
+            enabled: detect
 
 aplicacao:
     seguranca:
@@ -35,6 +38,10 @@ aplicacao:
             expiracao-chave: 86400000
 
 logging:
-    config: classpath:logback-spring.xml
     level:
+        org.springframework.boot.docker: off
         org.springframework: info
+        com.zaxxer.hikari: warn
+        liquibase: warn
+        org.hibernate: warn
+        root: info
