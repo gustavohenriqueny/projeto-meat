@@ -47,7 +47,7 @@ public class AutenticacaoServico {
         );
         Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail()).orElseThrow();
         String token = jwtServico.gerarToken(usuario);
-        return UsuarioDTO.builder().token(token).build();
+        return UsuarioDTO.builder().nome(usuario.getNome()).token(token).build();
     }
 
 }

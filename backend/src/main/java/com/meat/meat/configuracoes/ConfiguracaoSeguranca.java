@@ -1,6 +1,7 @@
 package com.meat.meat.configuracoes;
 
 import com.meat.meat.filtros.FiltroAutenticacaoJwt;
+import com.meat.meat.filtros.FiltroCors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,17 +20,19 @@ public class ConfiguracaoSeguranca {
 
     private final FiltroAutenticacaoJwt filtroAutenticacaoJwt;
     private final AuthenticationProvider authenticationProvider;
+    private final FiltroCors filtroCors;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
-                        authz -> authz.requestMatchers("/api/autenticacao/**")
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(filtroAutenticacaoJwt, UsernamePasswordAuthenticationFilter.class).build();
+                authz -> authz.requestMatchers("/api/autenticacao/**")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authenticationProvider(authenticationProvider)
+            .addFilterBefore(filtroCors, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(filtroAutenticacaoJwt, UsernamePasswordAuthenticationFilter.class).build();
     }
 
 }
