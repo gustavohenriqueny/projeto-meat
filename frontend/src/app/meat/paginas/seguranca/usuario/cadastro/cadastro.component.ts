@@ -1,5 +1,10 @@
 import {Component} from '@angular/core';
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UsuarioService} from "../../../../servicos/usuario.service";
+import {MensagemService} from "../../../../servicos/mensagem.service";
+import {Router} from "@angular/router";
+import {SUCESSO} from "../../../../../constantes";
 
 @Component({
     selector: 'meat-cadastro',
@@ -18,6 +23,26 @@ import {animate, keyframes, style, transition, trigger} from "@angular/animation
 })
 export class CadastroComponent {
 
+    formularioCadastro: FormGroup;
     cadastroAnimacao: string = 'visivel';
+
+    constructor(private usuarioServico: UsuarioService,
+                private mensagemServico: MensagemService,
+                private router: Router) {
+        this.formularioCadastro = new FormGroup({
+            nome: new FormControl('', Validators.required),
+            email: new FormControl('', Validators.required),
+            senha: new FormControl('', Validators.required),
+            confirmacaoSenha: new FormControl('', Validators.required)
+        }, {updateOn: 'change'})
+    }
+
+    cadastrarUsuario() {
+        this.usuarioServico.cadastrarUsuario(this.formularioCadastro.value)
+            .subscribe(usuario => {
+                this.mensagemServico.exibirMensagem(SUCESSO, 'Usuário criado com sucesso !', `Bem vindo ${usuario.nome}`)
+            });
+    }
+
 
 }

@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     loginAnimacao: string = 'visivel';
     formularioLogin: FormGroup;
     manterLogado: boolean = false;
-    token!: string;
 
     constructor(private usuarioServico: UsuarioService,
                 private mensagemServico: MensagemService,
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
         this.formularioLogin = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.pattern(PADRAO_EMAIL)]),
             senha: new FormControl('', [Validators.required]),
-            token: new FormControl(null)
         });
     }
 

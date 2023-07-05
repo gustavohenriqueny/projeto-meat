@@ -1,6 +1,6 @@
 <div class="centro background w-100 h-100">
 
-    <div [@cadastroAnimacao]="cadastroAnimacao" class="col-lg-8 col-md-8 col-sm-10 shadow-3 background-1 d-flex h-auto rounded-2">
+    <form [formGroup]="formularioCadastro" [@cadastroAnimacao]="cadastroAnimacao" class="col-lg-8 col-md-8 col-sm-10 shadow-3 background-1 d-flex h-auto rounded-2">
 
         <div class="centro flex-column col-lg-6 col-md-6 col-sm-6">
 
@@ -29,6 +29,7 @@
                 <div class="p-float-label col-lg-12 m-2">
                     <input id="senha"
                            pInputText
+                           type="password"
                            formControlName="senha"
                            class="p-inputtext-md col-lg-12 p-2"/>
                     <label for="senha">Senha</label>
@@ -37,6 +38,7 @@
                 <div class="p-float-label col-lg-12 m-2">
                     <input id="confirmacaoSenha"
                            pInputText
+                           type="password"
                            formControlName="confirmacaoSenha"
                            class="p-inputtext-md col-lg-12 p-2"/>
                     <label for="confirmacaoSenha">Confirmação da senha</label>
@@ -66,6 +68,6 @@
                  src="assets/imgs/login/fundo_login.jpg">
         </div>
 
-    </div>
+    </form>
 
 </div>
