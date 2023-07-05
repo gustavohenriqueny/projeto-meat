@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     loginAnimacao: string = 'visivel';
     formularioLogin: FormGroup;
     manterLogado: boolean = false;
+    token!: string;
 
     constructor(private usuarioServico: UsuarioService,
                 private mensagemServico: MensagemService,
@@ -53,12 +54,6 @@ export class LoginComponent implements OnInit {
                     this.mensagemServico.exibirMensagem(ERROR, 'Erro ao logar !', 'Ocorreu um erro ao buscar o usuário !')
                 }
             });
-    }
-
-    teste() {
-        this.usuarioServico.teste(this.formularioLogin.value.token).subscribe(mensagem => {
-            console.log(mensagem)
-        });
     }
 
 }

@@ -34,14 +34,6 @@
                     <label for="senha">Senha</label>
                 </div>
 
-                <div class="p-float-label col-lg-12 m-2">
-                    <input id="token"
-                           pInputText
-                           type="text"
-                           class="p-inputtext-md col-lg-12 p-2"/>
-                    <label for="token">Token</label>
-                </div>
-
                 <div class="col-lg-12 m-2">
                     <div class="d-flex justify-content-between align-items-center">
                         <p-checkbox class="fs-6 font-light" label="Manter conectado" [value]="manterLogado"/>
@@ -50,8 +42,6 @@
 
                     <div class="d-flex flex-column flex-wrap">
                         <button class="btn btn-success text-white col-lg-12 col-md-12 col-sm-12 my-2" (click)="logar()">Logar</button>
-                        <button class="btn btn-success text-white col-lg-12 col-md-12 col-sm-12 my-2" (click)="teste()">Teste</button>
-
                         <small class="text-center lead fs-6">Não possuí uma conta ? Cadastre - se</small>
                         <button class="btn btn-danger text-white col-lg-12 col-md-12 col-sm-12 mt-2" routerLink="/cadastro">Criar Conta</button>
                     </div>

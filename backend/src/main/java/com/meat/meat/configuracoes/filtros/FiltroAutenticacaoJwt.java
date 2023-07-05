@@ -1,4 +1,4 @@
-package com.meat.meat.filtros;
+package com.meat.meat.configuracoes.filtros;
 
 import com.meat.meat.servicos.autenticacao.JwtServico;
 import jakarta.servlet.FilterChain;

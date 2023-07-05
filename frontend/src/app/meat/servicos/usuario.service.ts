@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MEAT_API} from "../../constantes";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Usuario} from "../entidades/usuario";
 import {Observable, tap} from "rxjs";
@@ -12,6 +12,10 @@ export class UsuarioService {
 
     url: string = `${MEAT_API}/autenticacao`
     usuario: Usuario = new Usuario();
+    // headers = {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer`
+    // };
 
     constructor(private http: HttpClient,
                 private router: Router) {
@@ -31,11 +35,4 @@ export class UsuarioService {
             }));
     }
 
-    teste(token: string): Observable<any> {
-        const headers = new HttpHeaders();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', `Bearer ${token}`);
-        headers.append('Access-Control-Allow-Origin', '*')
-        return this.http.get(`${MEAT_API}/teste`, {headers: headers})
-    }
 }
