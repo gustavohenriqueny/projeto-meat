@@ -43,6 +43,9 @@ public class Usuario implements UserDetails {
     @Column(name = "senha")
     private String senha;
 
+    @Column(name = "token")
+    private String token;
+
     @Column(name = "data_criacao")
     private Timestamp dataCriacao;
 

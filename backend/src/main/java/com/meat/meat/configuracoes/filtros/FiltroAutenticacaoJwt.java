@@ -1,6 +1,6 @@
 package com.meat.meat.configuracoes.filtros;
 
-import com.meat.meat.servicos.autenticacao.JwtServico;
+import com.meat.meat.servicos.JwtServico;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,16 +25,14 @@ public class FiltroAutenticacaoJwt extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
 
     @Override
-    protected void doFilterInternal(
-            @NonNull HttpServletRequest request,
-            @NonNull HttpServletResponse response,
-            @NonNull FilterChain filterChain
-    ) throws ServletException, IOException {
-        String cabecalhoAutenticacao = request.getHeader("Authorization");
+    protected void doFilterInternal(@NonNull HttpServletRequest requisicao,
+                                    @NonNull HttpServletResponse resposta,
+                                    @NonNull FilterChain filterChain) throws ServletException, IOException {
+        String cabecalhoAutenticacao = requisicao.getHeader("Authorization");
         String token;
         String emailUsuario;
         if (cabecalhoAutenticacao == null || !cabecalhoAutenticacao.startsWith("Bearer ")) {
-            filterChain.doFilter(request, response);
+            filterChain.doFilter(requisicao, resposta);
             return;
         }
         token = cabecalhoAutenticacao.substring(7);
@@ -43,13 +41,13 @@ public class FiltroAutenticacaoJwt extends OncePerRequestFilter {
             UserDetails userDetails = userDetailsService.loadUserByUsername(emailUsuario);
             if (jwtServico.isTokenValido(token, emailUsuario)) {
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities()
+                    userDetails, null, userDetails.getAuthorities()
                 );
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(requisicao));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(requisicao, resposta);
     }
 
 }

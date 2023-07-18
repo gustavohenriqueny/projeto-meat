@@ -1,4 +1,4 @@
-package com.meat.meat.servicos.autenticacao;
+package com.meat.meat.servicos;
 
 import com.meat.meat.entidades.Usuario;
 import io.jsonwebtoken.Claims;

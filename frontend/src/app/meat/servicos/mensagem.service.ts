@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MessageService} from "primeng/api";
+import {ERROR, SUCESSO} from "../../constantes";
 
 @Injectable({
     providedIn: 'root'
@@ -19,5 +20,13 @@ export class MensagemService {
         setTimeout(() => {
             this.messageService.clear()
         }, 4000);
+    }
+
+    mensagemSucesso(titulo: string, mensagem: string) {
+        this.exibirMensagem(SUCESSO, titulo, mensagem);
+    }
+
+    mensagemErro(titulo: string, mensagem: string) {
+        this.exibirMensagem(ERROR, titulo, mensagem);
     }
 }

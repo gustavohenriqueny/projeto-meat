@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsuarioService} from "../../../../servicos/usuario.service";
 import {MensagemService} from "../../../../servicos/mensagem.service";
 import {Router} from "@angular/router";
-import {SUCESSO} from "../../../../../constantes";
+import {PADRAO_EMAIL, SUCESSO} from "../../../../../constantes";
 
 @Component({
     selector: 'meat-cadastro',
@@ -30,19 +30,26 @@ export class CadastroComponent {
                 private mensagemServico: MensagemService,
                 private router: Router) {
         this.formularioCadastro = new FormGroup({
-            nome: new FormControl('', Validators.required),
-            email: new FormControl('', Validators.required),
-            senha: new FormControl('', Validators.required),
-            confirmacaoSenha: new FormControl('', Validators.required)
+            nome: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            email: new FormControl('', [Validators.required, Validators.pattern(PADRAO_EMAIL)]),
+            senha: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            confirmacaoSenha: new FormControl('', [Validators.required, Validators.minLength(6)])
         }, {updateOn: 'change'})
     }
 
     cadastrarUsuario() {
         this.usuarioServico.cadastrarUsuario(this.formularioCadastro.value)
-            .subscribe(usuario => {
-                this.mensagemServico.exibirMensagem(SUCESSO, 'Usuário criado com sucesso !', `Bem vindo ${usuario.nome}`)
+            .subscribe({
+                next: usuario => {
+                    this.mensagemServico.mensagemSucesso('Usuário cadastrado!', `Bem vindo ${usuario?.nome}`)
+                },
+                error: erro => {
+                    this.mensagemServico.mensagemErro('Erro ao cadastrar usuário.', 'Entre em contato com o administrador.');
+                }
             });
     }
 
-
+    verificaSenhas(): boolean {
+        return this.formularioCadastro.value?.senha == this.formularioCadastro.value?.confirmacaoSenha;
+    }
 }

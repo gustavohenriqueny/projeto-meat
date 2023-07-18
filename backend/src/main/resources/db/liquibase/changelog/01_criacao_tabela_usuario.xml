@@ -9,6 +9,7 @@
             <column name="nome" type="varchar(255)"/>
             <column name="email" type="varchar(255)"/>
             <column name="senha" type="varchar(255)"/>
+            <column name="token" type="varchar(255)"/>
             <column name="data_criacao" type="timestamp"/>
             <column name="status" type="varchar(255)"/>
             <column name="permissao" type="varchar(255)"/>

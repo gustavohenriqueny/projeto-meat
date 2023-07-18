@@ -6,4 +6,5 @@ export class Usuario {
     status!: string;
     dataCriacao!: string;
     permissao!: string;
+    token!: string;
 }

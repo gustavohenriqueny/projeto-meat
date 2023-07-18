@@ -1,12 +1,15 @@
 <div class="d-flex flex-column justify-content-center w-100 h-100">
-    <div id="cabecalho">
+    <div id="cabecalho" *ngIf="usuarioEstaLogado()">
+        <meat-cabecalho></meat-cabecalho>
     </div>
     <div class="flex-grow-1" id="conteudo">
         <div class="position-absolute right-0 me-4">
-            <p-messages [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'"></p-messages>
+            <p-messages [showTransitionOptions]="'500ms'"
+                        [hideTransitionOptions]="'500ms'"></p-messages>
         </div>
         <router-outlet></router-outlet>
     </div>
-    <div id="rodape">
+    <div id="rodape" class="w-100 text-center" *ngIf="usuarioEstaLogado()">
+        Versão 1.0
     </div>
 </div>

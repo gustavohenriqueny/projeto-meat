@@ -24,7 +24,7 @@ public class UsuarioDTO implements Serializable {
     private Timestamp dataCriacao;
     private Permissao permissao;
     private Status status;
-    transient private String token;
+    private String token;
 
 
 }

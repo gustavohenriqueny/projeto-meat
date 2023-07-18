@@ -41,9 +41,12 @@
                     </div>
 
                     <div class="d-flex flex-column flex-wrap">
-                        <button class="btn btn-success text-white col-lg-12 col-md-12 col-sm-12 my-2" (click)="logar()">Logar</button>
+                        <button class="btn btn-success text-white col-lg-12 col-md-12 col-sm-12 my-2"
+                                (click)="logar()"
+                                [disabled]="formularioLogin.invalid">Logar
+                        </button>
                         <small class="text-center lead fs-6">Não possuí uma conta ? Cadastre - se</small>
-                        <button class="btn btn-danger text-white col-lg-12 col-md-12 col-sm-12 mt-2" routerLink="/cadastro">Criar Conta</button>
+                        <button class="btn btn-danger text-white col-lg-12 col-md-12 col-sm-12 mt-2" routerLink="/cadastrar">Criar Conta</button>
                     </div>
 
                 </div>

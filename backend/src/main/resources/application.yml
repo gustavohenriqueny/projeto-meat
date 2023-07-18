@@ -21,7 +21,7 @@ spring:
         change-log: classpath:db/liquibase/master.xml
     jpa:
         database: postgresql
-        show-sql: true
+        show-sql: false
         hibernate:
             ddl-auto: update
         properties:
@@ -42,6 +42,6 @@ logging:
         org.springframework.boot.docker: off
         org.springframework: info
         com.zaxxer.hikari: warn
-        liquibase: warn
+        liquibase: off
         org.hibernate: warn
         root: info

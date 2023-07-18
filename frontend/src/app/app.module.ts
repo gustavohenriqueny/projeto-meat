@@ -18,6 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {UsuarioService} from "./meat/servicos/usuario.service";
 import {MensagemService} from "./meat/servicos/mensagem.service";
 import {MessageService} from "primeng/api";
+import {RestaurantesComponent} from './meat/paginas/restaurantes/restaurantes.component';
+import {LocalStorageService} from "./meat/servicos/local-storage.service";
 
 @NgModule({
     declarations: [
@@ -25,7 +27,8 @@ import {MessageService} from "primeng/api";
         CabecalhoComponent,
         LoginComponent,
         CadastroComponent,
-        PaginaInicialComponent
+        PaginaInicialComponent,
+        RestaurantesComponent
     ],
     imports: [
         BrowserModule,
@@ -40,7 +43,12 @@ import {MessageService} from "primeng/api";
         MessagesModule,
         FormsModule
     ],
-    providers: [UsuarioService, MensagemService, MessageService],
+    providers: [
+        UsuarioService,
+        MensagemService,
+        MessageService,
+        LocalStorageService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

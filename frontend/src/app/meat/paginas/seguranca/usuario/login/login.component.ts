@@ -41,15 +41,16 @@ export class LoginComponent implements OnInit {
 
     logar() {
         this.usuarioServico.logarUsuario(this.formularioLogin)
-            .subscribe(usuario => {
-                this.mensagemServico.exibirMensagem(SUCESSO, 'Logado com sucesso !', `Seja bem vindo : ${usuario?.nome}`)
-                console.log(usuario.token)
-            }, error => {
-                console.log(error)
-                if (error.status === 404) {
-                    this.mensagemServico.exibirMensagem(ERROR, 'Erro ao logar !', 'Usuário não encontrado !');
-                } else {
-                    this.mensagemServico.exibirMensagem(ERROR, 'Erro ao logar !', 'Ocorreu um erro ao buscar o usuário !')
+            .subscribe({
+                next: usuario => {
+                    this.mensagemServico.exibirMensagem(SUCESSO, 'Logado com sucesso !', `Seja bem vindo : ${usuario?.nome}`)
+                },
+                error: error => {
+                    if (error.status === 404) {
+                        this.mensagemServico.exibirMensagem(ERROR, 'Erro ao logar !', 'Usuário não encontrado !');
+                    } else {
+                        this.mensagemServico.exibirMensagem(ERROR, 'Erro ao logar !', 'Ocorreu um erro ao buscar o usuário !')
+                    }
                 }
             });
     }
