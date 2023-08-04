@@ -20,6 +20,7 @@ import {MensagemService} from "./meat/servicos/mensagem.service";
 import {MessageService} from "primeng/api";
 import {RestaurantesComponent} from './meat/paginas/restaurantes/restaurantes.component';
 import {LocalStorageService} from "./meat/servicos/local-storage.service";
+import { RestauranteComponent } from './meat/paginas/restaurantes/restaurante/restaurante.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {LocalStorageService} from "./meat/servicos/local-storage.service";
         LoginComponent,
         CadastroComponent,
         PaginaInicialComponent,
-        RestaurantesComponent
+        RestaurantesComponent,
+        RestauranteComponent
     ],
     imports: [
         BrowserModule,

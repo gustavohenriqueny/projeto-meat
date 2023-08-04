@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="preenche-restaurantes" author="gustavo.henrique">
+        <insert tableName="restaurante">
+            <column name="id" value="1"/>
+            <column name="id_menu" value="1"/>
+            <column name="nome" value="Bread &amp; Bakery"/>
+            <column name="categoria" value="Bakery"/>
+            <column name="prazo_entrega" value="25"/>
+            <column name="caminho_imagem" value="assets/img/restaurantes/breadbakery.png"/>
+            <column name="sobre"
+                    value="A Bread &amp; Brakery tem 40 anos de mercado. Fazemos os melhores doces e pães. Compre e confira."/>
+            <column name="horario_funcionamento" value="Funciona de segunda à sexta, de 8h às 23h."/>
+        </insert>
+        <insert tableName="restaurante">
+            <column name="id" value="2"/>
+            <column name="id_menu" value="2"/>
+            <column name="nome" value="Burger House"/>
+            <column name="categoria" value="Hamburgers"/>
+            <column name="prazo_entrega" value="100"/>
+            <column name="caminho_imagem" value="assets/img/restaurantes/burgerhouse.png"/>
+            <column name="sobre" value="40 anos se especializando em trash food."/>
+            <column name="horario_funcionamento" value="Funciona todos os dias, de 10h às 22h."/>
+        </insert>
+        <insert tableName="restaurante">
+            <column name="id" value="3"/>
+            <column name="id_menu" value="3"/>
+            <column name="nome" value="Coffee Corner"/>
+            <column name="categoria" value="Coffee Shop"/>
+            <column name="prazo_entrega" value="30"/>
+            <column name="caminho_imagem" value="assets/img/restaurantes/coffeecorner.png"/>
+            <column name="sobre" value="A Coffe Corner foi eleita a melhor cafeteria da cidade."/>
+            <column name="horario_funcionamento" value="Funciona de segunda à sábado, de 6h às 22h."/>
+        </insert>
+        <insert tableName="restaurante">
+            <column name="id" value="4"/>
+            <column name="id_menu" value="4"/>
+            <column name="nome" value="Green Food"/>
+            <column name="categoria" value="Saudável"/>
+            <column name="prazo_entrega" value="75"/>
+            <column name="caminho_imagem" value="assets/img/restaurantes/greenfood.png"/>
+            <column name="sobre" value="Comida saudável é no Green Food. Compramos barato, vendemos caro."/>
+            <column name="horario_funcionamento" value="Somente em horário de almoço, das 11h às 15h."/>
+        </insert>
+        <insert tableName="restaurante">
+            <column name="id" value="5"/>
+            <column name="id_menu" value="5"/>
+            <column name="nome" value="Ice Cream"/>
+            <column name="categoria" value="Ice Cream"/>
+            <column name="prazo_entrega" value="65"/>
+            <column name="caminho_imagem" value="assets/img/restaurantes/icy.png"/>
+            <column name="sobre" value="A Ice Cream é uma sorveteria inovadora."/>
+            <column name="horario_funcionamento" value="Funciona todos os dias, de 10h às 1h."/>
+        </insert>
+        <insert tableName="restaurante">
+            <column name="id" value="6"/>
+            <column name="id_menu" value="6"/>
+            <column name="nome" value="Tasty Treats"/>
+            <column name="categoria" value="Doces"/>
+            <column name="prazo_entrega" value="20"/>
+            <column name="caminho_imagem" value="assets/img/restaurantes/tasty.png"/>
+            <column name="sobre" value="A doceria com mais tradição da cidade."/>
+            <column name="horario_funcionamento" value="Funciona de segunda à sábado, de 8h às 23h."/>
+        </insert>
+    </changeSet>
+    <changeSet id="preencher_menu" author="gustavo.henrique">
+        <insert tableName="menu">
+            <column name="id" value="1"/>
+            <column name="id_restaurante" value="1"/>
+        </insert>
+        <insert tableName="menu">
+            <column name="id" value="2"/>
+            <column name="id_restaurante" value="2"/>
+        </insert>
+        <insert tableName="menu">
+            <column name="id" value="3"/>
+            <column name="id_restaurante" value="3"/>
+        </insert>
+        <insert tableName="menu">
+            <column name="id" value="4"/>
+            <column name="id_restaurante" value="4"/>
+        </insert>
+        <insert tableName="menu">
+            <column name="id" value="5"/>
+            <column name="id_restaurante" value="5"/>
+        </insert>
+        <insert tableName="menu">
+            <column name="id" value="6"/>
+            <column name="id_restaurante" value="6"/>
+        </insert>
+    </changeSet>
+    <changeSet id="preencher_menu_item" author="gustavo.henrique">
+        <insert tableName="menu_item">
+            <column name="id" value="1"/>
+            <column name="id_menu" value="1"/>
+            <column name="nome" value="Cup Cake"/>
+            <column name="descricao" value="Cup Cake recheado de Doce de Leite."/>
+            <column name="preco" value="8.70"/>
+            <column name="caminho_imagem" value="assets/img/comidas/cupcake.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="2"/>
+            <column name="id_menu" value="1"/>
+            <column name="nome" value="Donut"/>
+            <column name="descricao" value="Coberto com chantilly."/>
+            <column name="preco" value="2.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/donut.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="3"/>
+            <column name="id_menu" value="1"/>
+            <column name="nome" value="Pão Artesanal Italiano"/>
+            <column name="descricao" value="Pão artesanal com queijos italianos."/>
+            <column name="preco" value="15.90"/>
+            <column name="caminho_imagem" value="assets/img/comidas/bread.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="4"/>
+            <column name="id_menu" value="2"/>
+            <column name="nome" value="Classic Burger"/>
+            <column name="descricao" value="O clássico. Não tem como errar."/>
+            <column name="preco" value="18.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/burger.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="5"/>
+            <column name="id_menu" value="2"/>
+            <column name="nome" value="Batatas Fritas"/>
+            <column name="descricao" value="Batatas fritas crocantes."/>
+            <column name="preco" value="5.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/fries.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="6"/>
+            <column name="id_menu" value="2"/>
+            <column name="nome" value="Refrigerante"/>
+            <column name="descricao" value="O refri mais gelado da cidade."/>
+            <column name="preco" value="4.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/coke.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="7"/>
+            <column name="id_menu" value="3"/>
+            <column name="nome" value="Cappuccino com Chantilly"/>
+            <column name="descricao" value="Tradicional cappuccino com chantilly."/>
+            <column name="preco" value="9.90"/>
+            <column name="caminho_imagem" value="assets/img/comidas/capp.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="8"/>
+            <column name="id_menu" value="3"/>
+            <column name="nome" value="Super Espreso"/>
+            <column name="descricao" value="Café espresso duplo."/>
+            <column name="preco" value="12.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/capp.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="9"/>
+            <column name="id_menu" value="3"/>
+            <column name="nome" value="Starbucks Copycat"/>
+            <column name="descricao" value="O mais pedido da casa. O verdadeiro café americano pura água."/>
+            <column name="preco" value="15.60"/>
+            <column name="caminho_imagem" value="assets/img/comidas/starb.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="10"/>
+            <column name="id_menu" value="4"/>
+            <column name="nome" value="Lasagna de Zucchini"/>
+            <column name="descricao" value="Lasagna deliciosa que se salva por causa do queijo."/>
+            <column name="preco" value="14.90"/>
+            <column name="caminho_imagem" value="assets/img/comidas/zlasagna.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="11"/>
+            <column name="id_menu" value="4"/>
+            <column name="nome" value="Sanduíche de Frango"/>
+            <column name="descricao" value="Frango grelhado e salada."/>
+            <column name="preco" value="10.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/greensandwich.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="12"/>
+            <column name="id_menu" value="4"/>
+            <column name="nome" value="Salada Ceasar"/>
+            <column name="descricao" value="Clássica salada ceasar."/>
+            <column name="preco" value="12.90"/>
+            <column name="caminho_imagem" value="assets/img/comidas/ceasar.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="13"/>
+            <column name="id_menu" value="5"/>
+            <column name="nome" value="Mega Sunday"/>
+            <column name="descricao" value="Sunday com várias bolas de sorvete a sua escolha."/>
+            <column name="preco" value="21.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/sunday.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="14"/>
+            <column name="id_menu" value="5"/>
+            <column name="nome" value="Picolé de Brigadeiro"/>
+            <column name="descricao" value="Picolé de brigadeiro recheado com côco."/>
+            <column name="preco" value="8.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/chocpop.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="15"/>
+            <column name="id_menu" value="5"/>
+            <column name="nome" value="Sorvete Simples"/>
+            <column name="descricao" value="Clássico sorvete de rua onde todos os sabores são idênticos."/>
+            <column name="preco" value="1.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/icestd.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="16"/>
+            <column name="id_menu" value="6"/>
+            <column name="nome" value="Cup Cake de Choc. Branco"/>
+            <column name="descricao" value="Cup Cake de chocolate branco."/>
+            <column name="preco" value="5.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/cup.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="17"/>
+            <column name="id_menu" value="6"/>
+            <column name="nome" value="Bolo de Morango"/>
+            <column name="descricao" value="Bolo recheado e coberto com morangos."/>
+            <column name="preco" value="20.50"/>
+            <column name="caminho_imagem" value="assets/img/comidas/straw.png"/>
+        </insert>
+        <insert tableName="menu_item">
+            <column name="id" value="18"/>
+            <column name="id_menu" value="6"/>
+            <column name="nome" value="Fatia de Bolo"/>
+            <column name="descricao" value="Fatia de bolo de morango."/>
+            <column name="preco" value="5.90"/>
+            <column name="caminho_imagem" value="assets/img/comidas/cake.png"/>
+        </insert>
+    </changeSet>
+    <changeSet id="preencher_avaliacoes" author="gustavo.henrique">
+        <insert tableName="avaliacao">
+            <column name="id" value="1"/>
+            <column name="id_restaurante" value="1"/>
+            <column name="nome" value="Júlia"/>
+            <column name="avaliacao" value="4.5"/>
+            <column name="comentario" value="Tudo muito bom, entrega no tempo certo."/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="2"/>
+            <column name="id_restaurante" value="1"/>
+            <column name="nome" value="Aline"/>
+            <column name="avaliacao" value="3"/>
+            <column name="comentario" value="NÃO recomendo. O recheio é só um creme, não tem camarão e nem carne."/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="3"/>
+            <column name="id_restaurante" value="1"/>
+            <column name="nome" value="Renata"/>
+            <column name="avaliacao" value="2"/>
+            <column name="comentario"
+                    value="Não foi muito agradável ao nosso paladar, e eu e meu esposo no outro dia passamos super mal. Pode até ter sido outra coisa, mas..."/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="4"/>
+            <column name="id_restaurante" value="2"/>
+            <column name="nome" value="Daniela"/>
+            <column name="avaliacao" value="4"/>
+            <column name="comentario" value="Sanduíche muito bom! Já pedi diversas vezes sempre bom!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="5"/>
+            <column name="id_restaurante" value="2"/>
+            <column name="nome" value="Laila"/>
+            <column name="avaliacao" value="5"/>
+            <column name="comentario" value="Melhor hambúrguer que já provei. Vai ser difícil voltar para mc e bk!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="6"/>
+            <column name="id_restaurante" value="2"/>
+            <column name="nome" value="Suzana"/>
+            <column name="avaliacao" value="3.5"/>
+            <column name="comentario" value="Meu sanduíche chegou frio e todo desmontado =\"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="7"/>
+            <column name="id_restaurante" value="3"/>
+            <column name="nome" value="Eric"/>
+            <column name="avaliacao" value="4.5"/>
+            <column name="comentario" value="Excelente opção! Recomendo!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="8"/>
+            <column name="id_restaurante" value="3"/>
+            <column name="nome" value="Amanda"/>
+            <column name="avaliacao" value="2.5"/>
+            <column name="comentario" value="Demorou muito e o café veio gelado!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="9"/>
+            <column name="id_restaurante" value="3"/>
+            <column name="nome" value="Carla"/>
+            <column name="avaliacao" value="4.8"/>
+            <column name="comentario"
+                    value="Tudo perfeito. Entrega, embalagem, comida. Resultado? Melhor custo beneficio!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="10"/>
+            <column name="id_restaurante" value="4"/>
+            <column name="nome" value="João"/>
+            <column name="avaliacao" value="4.8"/>
+            <column name="comentario"
+                    value="Tudo perfeito. Entrega, embalagem, comida. Resultado? Melhor custo beneficio!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="11"/>
+            <column name="id_restaurante" value="4"/>
+            <column name="nome" value="André"/>
+            <column name="avaliacao" value="4.5"/>
+            <column name="comentario" value="Excelente como sempre!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="12"/>
+            <column name="id_restaurante" value="4"/>
+            <column name="nome" value="Marcelo"/>
+            <column name="avaliacao" value="4.5"/>
+            <column name="comentario" value="Chegou muito rápido, antes mesmo da previsão!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="13"/>
+            <column name="id_restaurante" value="5"/>
+            <column name="nome" value="Fatinha"/>
+            <column name="avaliacao" value="2"/>
+            <column name="comentario" value="Não gostei dos sabores que pedi e achei o preço muito elevado!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="14"/>
+            <column name="id_restaurante" value="5"/>
+            <column name="nome" value="Lucas"/>
+            <column name="avaliacao" value="2.5"/>
+            <column name="comentario" value="Esperar 1:45hr pra receber o pedido é INACEITÁVEL!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="15"/>
+            <column name="id_restaurante" value="5"/>
+            <column name="nome" value="Jacira"/>
+            <column name="avaliacao" value="4.5"/>
+            <column name="comentario" value="Veio OK!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="16"/>
+            <column name="id_restaurante" value="6"/>
+            <column name="nome" value="Ana"/>
+            <column name="avaliacao" value="5"/>
+            <column name="comentario"
+                    value="Rápido e sempre uma delicia!! Ja pedi 3x e sempre veio rapido e tudo certinho."/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="17"/>
+            <column name="id_restaurante" value="6"/>
+            <column name="nome" value="Larissa"/>
+            <column name="avaliacao" value="2.5"/>
+            <column name="comentario" value="A taxa de entrega poderia ser mais barata."/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+        <insert tableName="avaliacao">
+            <column name="id" value="18"/>
+            <column name="id_restaurante" value="6"/>
+            <column name="nome" value="Jarbas"/>
+            <column name="avaliacao" value="4.7"/>
+            <column name="comentario" value="Excelente e chegou muito rápido!"/>
+            <column name="data_avaliacao" value="2017-01-23T18:25:43"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

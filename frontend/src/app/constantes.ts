@@ -9,4 +9,4 @@ export const PADRAO_EMAIL = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)
 export const PADRAO_NUMERO = /^[0-9]*$/;
 
 // Constante que aponta para a url da api no backend.
-export const MEAT_API = 'http://localhost:8080/api';
+export const MEAT_API = 'http://localhost:8080/';

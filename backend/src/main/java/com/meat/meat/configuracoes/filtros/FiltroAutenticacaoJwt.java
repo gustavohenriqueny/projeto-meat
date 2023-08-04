@@ -1,6 +1,5 @@
 package com.meat.meat.configuracoes.filtros;
 
-import com.meat.meat.servicos.JwtServico;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +20,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class FiltroAutenticacaoJwt extends OncePerRequestFilter {
 
-    private final JwtServico jwtServico;
+    private final com.meat.meat.servicos.jwt.JwtServicoImpl jwtServicoImpl;
     private final UserDetailsService userDetailsService;
 
     @Override
@@ -36,10 +35,10 @@ public class FiltroAutenticacaoJwt extends OncePerRequestFilter {
             return;
         }
         token = cabecalhoAutenticacao.substring(7);
-        emailUsuario = jwtServico.extrairUsuario(token);
+        emailUsuario = jwtServicoImpl.extrairUsuario(token);
         if (emailUsuario != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(emailUsuario);
-            if (jwtServico.isTokenValido(token, emailUsuario)) {
+            if (jwtServicoImpl.isTokenValido(token, emailUsuario)) {
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     userDetails, null, userDetails.getAuthorities()
                 );

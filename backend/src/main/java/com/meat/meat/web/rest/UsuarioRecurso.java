@@ -1,17 +1,16 @@
 package com.meat.meat.web.rest;
 
 import com.meat.meat.entidades.dtos.UsuarioDTO;
-import com.meat.meat.servicos.UsuarioServico;
+import com.meat.meat.servicos.autenticacao.UsuarioServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/autenticacao")
+@RequestMapping("/autenticacao")
 @RequiredArgsConstructor
 public class UsuarioRecurso {
 
@@ -23,12 +22,8 @@ public class UsuarioRecurso {
     }
 
     @PostMapping("/logar")
-    public ResponseEntity<UsuarioDTO> logar(@RequestBody UsuarioDTO usuarioDTO) {
-        return ResponseEntity.ok(usuarioServico.logar(usuarioDTO));
+    public ResponseEntity<UsuarioDTO> logar(@RequestBody UsuarioDTO usuario) {
+        return ResponseEntity.ok(usuarioServico.logar(usuario));
     }
 
-    @PostMapping("/obterUsuario")
-    public ResponseEntity<UsuarioDTO> obterUsuario(@RequestBody String token) {
-        return ResponseEntity.ok(usuarioServico.obterUsuarioPorToken(token));
-    }
 }

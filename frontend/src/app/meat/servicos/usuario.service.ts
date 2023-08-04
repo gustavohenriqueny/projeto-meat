@@ -34,14 +34,6 @@ export class UsuarioService implements OnInit {
                 this.setarUsuario(usuario, true);
             }));
     }
-
-    public obterUsuario() {
-        this.http.get<Usuario>(`${this.url}/obterUsuario`)
-            .pipe(tap(usuario => {
-                this.setarUsuario(usuario, false);
-            }));
-    }
-
     private setarUsuario(usuario: Usuario, redirecionar: boolean) {
         this.usuario = usuario;
         this.local.setItem('usuario', usuario);

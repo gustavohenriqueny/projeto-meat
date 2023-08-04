@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="criar_chaves_primaria" author="gustavo.henrique">
+        <addPrimaryKey tableName="restaurante" columnNames="id"/>
+        <addAutoIncrement tableName="menu" columnName="id"/>
+
+        <addPrimaryKey tableName="menu" columnNames="id"/>
+        <addAutoIncrement tableName="menu" columnName="id"/>
+
+        <addPrimaryKey tableName="menu_item" columnNames="id"/>
+        <addAutoIncrement tableName="menu_item" columnName="id"/>
+
+        <addPrimaryKey tableName="pedido" columnNames="id"/>
+        <addAutoIncrement tableName="pedido" columnName="id"/>
+
+        <addPrimaryKey tableName="pedido_item" columnNames="id"/>
+        <addAutoIncrement tableName="pedido_item" columnName="id"/>
+
+        <addPrimaryKey tableName="avaliacao" columnNames="id"/>
+        <addAutoIncrement tableName="avaliacao" columnName="id"/>
+
+        <addPrimaryKey tableName="usuario" columnNames="id"/>
+        <addAutoIncrement tableName="usuario" columnName="id"/>
+    </changeSet>
+
+    <changeSet id="criar_chaves_estrangeiras" author="gustavo.henrique">
+        <addForeignKeyConstraint baseTableName="restaurante"
+                                 baseColumnNames="id_menu"
+                                 constraintName="fk_restaurante_menu"
+                                 referencedTableName="menu"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="menu"
+                                 baseColumnNames="id_restaurante"
+                                 constraintName="fk_menu_restaurante"
+                                 referencedTableName="restaurante"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="menu_item"
+                                 baseColumnNames="id_menu"
+                                 constraintName="fk_menu_item_menu"
+                                 referencedTableName="menu"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="pedido_item"
+                                 baseColumnNames="id_pedido"
+                                 constraintName="fk_pedido_item_pedido"
+                                 referencedTableName="pedido"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="pedido_item"
+                                 baseColumnNames="id_menu_item"
+                                 constraintName="fk_pedido_item_menu_item"
+                                 referencedTableName="menu_item"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="avaliacao"
+                                 baseColumnNames="id_restaurante"
+                                 constraintName="fk_avaliacao_restaurante"
+                                 referencedTableName="restaurante"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="pedido"
+                                 baseColumnNames="id_usuario"
+                                 constraintName="fk_pedido_usuario"
+                                 referencedTableName="usuario"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

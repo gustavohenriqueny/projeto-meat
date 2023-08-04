@@ -21,7 +21,7 @@ spring:
         change-log: classpath:db/liquibase/master.xml
     jpa:
         database: postgresql
-        show-sql: false
+        show-sql: true
         hibernate:
             ddl-auto: update
         properties:

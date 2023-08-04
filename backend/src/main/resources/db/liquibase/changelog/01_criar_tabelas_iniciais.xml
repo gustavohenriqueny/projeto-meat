@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="criar_tabela_restaurante" author="gustavo.henrique">
+        <createTable tableName="restaurante">
+            <column name="id" type="bigint"/>
+            <column name="id_menu" type="bigint"/>
+            <column name="nome" type="varchar(255)"/>
+            <column name="categoria" type="varchar(255)"/>
+            <column name="prazo_entrega" type="varchar(255)"/>
+            <column name="caminho_imagem" type="varchar(255)"/>
+            <column name="sobre" type="varchar(255)"/>
+            <column name="horario_funcionamento" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar_tabela_menu" author="gustavo.henrique">
+        <createTable tableName="menu">
+            <column name="id" type="bigint"/>
+            <column name="id_restaurante" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar_tabela_menu_item" author="gustavo.henrique">
+        <createTable tableName="menu_item">
+            <column name="id" type="bigint"/>
+            <column name="id_menu" type="bigint"/>
+            <column name="nome" type="varchar(255)"/>
+            <column name="descricao" type="varchar(255)"/>
+            <column name="preco" type="decimal"/>
+            <column name="caminho_imagem" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar_tabela_pedido" author="gustavo.henrique">
+        <createTable tableName="pedido">
+            <column name="id" type="bigint"/>
+            <column name="id_usuario" type="bigint"/>
+            <column name="metodo_pagamento" type="varchar(255)"/>
+            <column name="numero" type="int"/>
+            <column name="endereco" type="varchar(255)"/>
+            <column name="endereco_opcional" type="varchar(255)"/>
+            <column name="data_pedido" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar_tabela_pedido_item" author="gustavo.henrique">
+        <createTable tableName="pedido_item">
+            <column name="id" type="bigint"/>
+            <column name="id_pedido" type="bigint"/>
+            <column name="id_menu_item" type="bigint"/>
+            <column name="quantidade" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar_tabela_avaliacao" author="gustavo.henrique">
+        <createTable tableName="avaliacao">
+            <column name="id" type="bigint"/>
+            <column name="id_restaurante" type="bigint"/>
+            <column name="nome" type="varchar(255)"/>
+            <column name="avaliacao" type="decimal"/>
+            <column name="comentario" type="varchar(255)"/>
+            <column name="data_avaliacao" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar_tabela_usuario" author="gustavo.henrique">
+        <createTable tableName="usuario">
+            <column name="id" type="bigint"/>
+            <column name="nome" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="senha" type="varchar(255)"/>
+            <column name="data_criacao" type="timestamp"/>
+            <column name="token" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

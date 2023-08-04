@@ -14,11 +14,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.usuarioEstaLogado()) {
-            this.router.navigate(['/restaurantes']);
-        } else {
-            this.router.navigate(['/']);
-        }
+        // if (this.usuarioEstaLogado()) {
+        //     this.router.navigate(['/restaurantes']);
+        // } else {
+        //     this.router.navigate(['/']);
+        // }
     }
 
     usuarioEstaLogado() {

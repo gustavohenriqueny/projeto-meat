@@ -7,19 +7,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -47,15 +48,15 @@ public class Usuario implements UserDetails {
     private String token;
 
     @Column(name = "data_criacao")
-    private Timestamp dataCriacao;
+    private Timestamp dataCriacao = ObjectUtils.clone(new Timestamp(new Date().getTime()));
 
     @Enumerated(EnumType.STRING)
     @Column(name = "permissao")
-    private Permissao permissao;
+    private Permissao permissao = Permissao.ADMINISTRADOR;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Status status;
+    private Status status = Status.ATIVO;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
